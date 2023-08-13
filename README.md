@@ -39,6 +39,19 @@ or payload {
 - expects msg.payload to be string with domain name
 - returns json
 
+#### getDns
+```js
+msg.payload = {
+    id: null,
+    domain_name: 'example.com',
+    dns_type: 'A', // "A" | "AAAA" | "CNAME" | "MX" | "TXT" | "NS"
+    dns_name: 'subdomain',
+    dns_value: '127.0.0.1',
+    dns_ttl: '3600',
+}
+
+```
+
 ## on Out msg
 we receive following fields
  - status HTTP status code

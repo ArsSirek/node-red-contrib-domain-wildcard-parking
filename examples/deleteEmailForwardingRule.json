@@ -1,0 +1,156 @@
+[
+  {
+    "id": "f6f2187d.f17ca8",
+    "type": "tab",
+    "label": "Flow 1",
+    "disabled": false,
+    "info": ""
+  },
+  {
+    "id": "b3c1eeb6c268af3e",
+    "type": "inject",
+    "z": "f6f2187d.f17ca8",
+    "name": "",
+    "props": [],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "x": 270,
+    "y": 300,
+    "wires": [
+      [
+        "ede36c7d01c58dd3"
+      ]
+    ]
+  },
+  {
+    "id": "8e9b6159eaeac719",
+    "type": "debug",
+    "z": "f6f2187d.f17ca8",
+    "name": "",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "true",
+    "targetType": "full",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 830,
+    "y": 300,
+    "wires": []
+  },
+  {
+    "id": "9579b9069fe2823d",
+    "type": "wcp-api",
+    "z": "f6f2187d.f17ca8",
+    "name": "wcp-api",
+    "config": "c294b62045f64724",
+    "action": "action",
+    "payload": "payload",
+    "x": 620,
+    "y": 300,
+    "wires": [
+      [
+        "8e9b6159eaeac719"
+      ]
+    ]
+  },
+  {
+    "id": "ede36c7d01c58dd3",
+    "type": "function",
+    "z": "f6f2187d.f17ca8",
+    "name": "function 1",
+    "func": "\nmsg.action = 'deleteEmailForwardingRule';\n\nmsg.payload = {\n    rule_id: 167,\n}\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 440,
+    "y": 300,
+    "wires": [
+      [
+        "9579b9069fe2823d"
+      ]
+    ]
+  },
+  {
+    "id": "c66052f2d24c28e7",
+    "type": "inject",
+    "z": "f6f2187d.f17ca8",
+    "name": "",
+    "props": [],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "x": 270,
+    "y": 400,
+    "wires": [
+      [
+        "04cc349e722db79d"
+      ]
+    ]
+  },
+  {
+    "id": "a8c41afb2be4047a",
+    "type": "debug",
+    "z": "f6f2187d.f17ca8",
+    "name": "",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "true",
+    "targetType": "full",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 830,
+    "y": 400,
+    "wires": []
+  },
+  {
+    "id": "5a917172b5b006f3",
+    "type": "wcp-api",
+    "z": "f6f2187d.f17ca8",
+    "name": "wcp-api",
+    "config": "c294b62045f64724",
+    "action": "action",
+    "payload": "payload",
+    "x": 620,
+    "y": 400,
+    "wires": [
+      [
+        "a8c41afb2be4047a"
+      ]
+    ]
+  },
+  {
+    "id": "04cc349e722db79d",
+    "type": "function",
+    "z": "f6f2187d.f17ca8",
+    "name": "function 2",
+    "func": "\nmsg.action = 'deleteEmailForwardingRule';\n\nmsg.payload = {\n    domain_name: 'example.com',\n}\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 440,
+    "y": 400,
+    "wires": [
+      [
+        "5a917172b5b006f3"
+      ]
+    ]
+  },
+  {
+    "id": "c294b62045f64724",
+    "type": "wcp-api-config",
+    "name": "wcp-api-config"
+  }
+]

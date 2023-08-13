@@ -1,0 +1,77 @@
+[
+  {
+    "id": "f6f2187d.f17ca8",
+    "type": "tab",
+    "label": "Flow 1",
+    "disabled": false,
+    "info": ""
+  },
+  {
+    "id": "964c1c62b32ca094",
+    "type": "inject",
+    "z": "f6f2187d.f17ca8",
+    "name": "",
+    "props": [
+      {
+        "p": "action",
+        "v": "getDomain",
+        "vt": "str"
+      },
+      {
+        "p": "payload"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "able.blue",
+    "payloadType": "str",
+    "x": 260,
+    "y": 240,
+    "wires": [
+      [
+        "6c1866b49fa52dac"
+      ]
+    ]
+  },
+  {
+    "id": "211b8d760fe61f63",
+    "type": "debug",
+    "z": "f6f2187d.f17ca8",
+    "name": "",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "true",
+    "targetType": "full",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 670,
+    "y": 240,
+    "wires": []
+  },
+  {
+    "id": "6c1866b49fa52dac",
+    "type": "wcp-api",
+    "z": "f6f2187d.f17ca8",
+    "name": "WildcardApi",
+    "config": "c294b62045f64724",
+    "action": "action",
+    "payload": "payload",
+    "x": 470,
+    "y": 240,
+    "wires": [
+      [
+        "211b8d760fe61f63"
+      ]
+    ]
+  },
+  {
+    "id": "c294b62045f64724",
+    "type": "wcp-api-config",
+    "name": "wcp-api-config"
+  }
+]

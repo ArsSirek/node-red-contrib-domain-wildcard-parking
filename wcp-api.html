@@ -1,0 +1,43 @@
+<script type="text/javascript">
+	RED.nodes.registerType('wcp-api', {
+		category: "mattermost",
+		defaults: {
+			name: {value: "WildcardApi"},
+            config: {value: "", type: "wcp-api-config", required: true},
+			action: {value: "action", required: true},
+			payload: {value: "payload", required: true},
+		},
+		inputs: 1,
+		outputs: 1,
+		icon: "white-globe.png",
+		color: "rgb(36, 165, 222)",
+		label: function () {
+			return (this.name || "wcp-api")
+		}
+	});
+</script>
+
+<script type="text/html" data-template-name="wcp-api">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name"/>
+    </div>
+    <div class="form-row">
+        <label for="node-input-config"><i class="icon-bookmark"></i> Api Config</label>
+        <input type="text" id="node-input-config"/>
+    </div>
+    <div class="form-row">
+        <label for="node-input-action"><i class="icon-bookmark"></i> Action field</label>
+        <input type="text" id="node-input-action"/>
+    </div>
+    <div class="form-row">
+        <label for="node-input-payload"><i class="icon-bookmark"></i> Field field</label>
+        <input type="text" id="node-input-payload"/>
+    </div>
+
+</script>
+
+<script type="text/html" data-help-name="wcp-api">
+    <p>Wildcardparking api calls</p>
+    <p>action and payload fields should contain field names to look data on msg. (js executable msg[filedName])</p>
+</script>

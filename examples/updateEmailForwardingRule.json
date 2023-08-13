@@ -1,0 +1,130 @@
+[
+    {
+        "id": "f6f2187d.f17ca8",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "b3c1eeb6c268af3e",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "props": [
+            {
+                "p": "action",
+                "v": "getDomain",
+                "vt": "str"
+            },
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "able.blue",
+        "payloadType": "str",
+        "x": 120,
+        "y": 500,
+        "wires": [
+            [
+                "9579b9069fe2823d"
+            ]
+        ]
+    },
+    {
+        "id": "8e9b6159eaeac719",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1090,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "9579b9069fe2823d",
+        "type": "wcp-api",
+        "z": "f6f2187d.f17ca8",
+        "name": "getDomainId",
+        "config": "c294b62045f64724",
+        "action": "action",
+        "payload": "payload",
+        "x": 290,
+        "y": 500,
+        "wires": [
+            [
+                "35e6bd8a7857b163"
+            ]
+        ]
+    },
+    {
+        "id": "c7d812c3057d2c23",
+        "type": "wcp-api",
+        "z": "f6f2187d.f17ca8",
+        "name": "updateEmailForwardingRule",
+        "config": "c294b62045f64724",
+        "action": "action",
+        "payload": "payload",
+        "x": 880,
+        "y": 500,
+        "wires": [
+            [
+                "8e9b6159eaeac719"
+            ]
+        ]
+    },
+    {
+        "id": "35e6bd8a7857b163",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "update Action",
+        "func": "\nmsg.action = 'updateEmailForwardingRule';\n\nmsg.payload = {\n    is_new: true,\n    rule_id: null,\n    domain_id: msg.payload.data.id,\n    inboxes: [\"myname\"], // array of ids or text values\n    forwardTo: [\"existing-mail@example.com\"], // array of ids or text values\n    description: \"Node Red generated\",\n    status: \"active\",\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 500,
+        "wires": [
+            [
+                "c7d812c3057d2c23",
+                "9badbef1bdf07d48"
+            ]
+        ]
+    },
+    {
+        "id": "9badbef1bdf07d48",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 670,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "c294b62045f64724",
+        "type": "wcp-api-config",
+        "name": "wcp-api-config"
+    }
+]

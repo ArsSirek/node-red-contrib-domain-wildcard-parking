@@ -1,0 +1,28 @@
+
+
+<script type="text/javascript">
+	RED.nodes.registerType('wcp-api-config', {
+		category: 'config',
+		defaults: {
+			name: { value: "wcp-api-config" },
+		},
+		credentials: {
+            apikey: {value: '', required: true}
+		},
+        color: "rgb(36, 165, 222)",
+		label: function() {
+			return this.name;
+		}
+	});
+</script>
+
+<script type="text/html"  data-template-name="wcp-api-config">
+    <div class="form-row">
+        <label for="node-config-input-name"><i class="fa fa-user"></i> Name</label>
+        <input type="text" id="node-config-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-apikey"><i class="fa fa-lock"></i> Personal Access Token</label>
+        <input type="text" id="node-config-input-apikey">
+    </div>
+</script>

@@ -46,10 +46,6 @@ module.exports = function(RED) {
 
 			action(payload, node.apiConfig.apiToken)
 				.then((res) => {
-
-					console.log(
-						'res', res
-					)
 					node.status({
 						fill: "green",
 						shape: "dot",
@@ -61,7 +57,6 @@ module.exports = function(RED) {
 					})
 				})
 				.catch((error) => {
-					console.log('error', error);
 					node.send({
 						...msg,
 						error: error,

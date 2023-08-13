@@ -1,5 +1,5 @@
 
 module.exports = {
-    apiHost: 'dev.api.parking.works',
-    apiPort: '80',
+    apiHost: 'wildcardparking.com',
+    apiPort: '443',
 }

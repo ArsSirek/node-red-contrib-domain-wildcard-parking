@@ -21,7 +21,6 @@ module.exports = {
         } else if (method === 'POST') {
             options.headers['Content-Type'] = 'application/json';
         }
-        console.log('options', options);
 
         return new Promise((resolve, reject) => {
             const req = http.request(options, (response) => {

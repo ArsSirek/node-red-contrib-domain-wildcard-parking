@@ -1,5 +1,3 @@
-const http = require('node:http');
-
 const {httpWithCompleteResponse} = require("./utils");
 
 

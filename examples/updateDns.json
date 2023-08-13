@@ -1,0 +1,85 @@
+[
+    {
+        "id": "f6f2187d.f17ca8",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "b3c1eeb6c268af3e",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 270,
+        "y": 300,
+        "wires": [
+            [
+                "ede36c7d01c58dd3"
+            ]
+        ]
+    },
+    {
+        "id": "8e9b6159eaeac719",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 770,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "9579b9069fe2823d",
+        "type": "wcp-api",
+        "z": "f6f2187d.f17ca8",
+        "name": "wcp-api",
+        "config": "c294b62045f64724",
+        "action": "action",
+        "payload": "payload",
+        "x": 620,
+        "y": 300,
+        "wires": [
+            [
+                "8e9b6159eaeac719"
+            ]
+        ]
+    },
+    {
+        "id": "ede36c7d01c58dd3",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "prepare payload",
+        "func": "\nmsg.action = 'updateDns';\n\nmsg.payload = {\n    id: null,\n    domain_name: 'able.blue',\n    dns_type: 'A', // \"A\" | \"AAAA\" | \"CNAME\" | \"MX\" | \"TXT\" | \"NS\"\n    dns_name: 'subdomain',\n    dns_value: '127.0.0.2',\n    dns_ttl: '3600',\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 300,
+        "wires": [
+            [
+                "9579b9069fe2823d"
+            ]
+        ]
+    },
+    {
+        "id": "c294b62045f64724",
+        "type": "wcp-api-config",
+        "name": "wcp-api-config"
+    }
+]

@@ -1,7 +1,6 @@
-const http = require('node:http');
-
 const {updateEmailForwardingRule, deleteEmailForwardingRule} = require("./api/EmailForwarding");
 const {getDomain} = require("./api/Domain");
+const {getDns, updateDns, deleteDns} = require("./api/Dns");
 
 module.exports = function(RED) {
 	function wcpSend(config) {
@@ -17,9 +16,19 @@ module.exports = function(RED) {
 			});
 
 			let action = () => {};
+			let payload = msg[config.payload];
 			switch (msg[config.action]) {
 				case 'getDomain':
 					action = getDomain;
+					break;
+				case 'getDns':
+					action = getDns;
+					break;
+				case 'updateDns':
+					action = updateDns;
+					break;
+				case 'deleteDns':
+					action = deleteDns;
 					break;
 				case 'updateEmailForwardingRule':
 					action = updateEmailForwardingRule;
@@ -29,7 +38,13 @@ module.exports = function(RED) {
 					break;
 			}
 
-			action(msg[config.payload], node.apiConfig.apiToken)
+			if (typeof payload === 'string') {
+				payload = {
+					domain_name: payload,
+				}
+			}
+
+			action(payload, node.apiConfig.apiToken)
 				.then((res) => {
 
 					console.log(

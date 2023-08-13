@@ -10,8 +10,8 @@ adds Node to call Wildcard parking API by Personal Access Token
 
 #### updateEmailForwardingRule 
  - expects msg.payload to be object with following fields 
-```json
-{
+```js
+msg.payload = {
     "is_new": true,
     "rule_id": null,
     "domain_id": 1, // msg.payload.data.id 
@@ -34,6 +34,10 @@ payload {
 or payload {
     domain_name: string,
 } if you want to delete all forwarding rules for a domain name
+
+#### getDns
+- expects msg.payload to be string with domain name
+- returns json
 
 ## on Out msg
 we receive following fields
